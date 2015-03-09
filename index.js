@@ -14,6 +14,7 @@ module.exports = {
       name: 'ember-cli-babel',
       ext: 'js',
       toTree: function(tree) {
+        options.compact = false; // JSCHILLI - override until https://github.com/babel/ember-cli-babel/issues/25
         return require('broccoli-babel-transpiler')(tree, options);
       }
     };
