@@ -15,10 +15,10 @@ module.exports = {
       toTree: function(tree) {
         var options = getOptions(addon);
         var transpiler = require('broccoli-babel-transpiler');
-        var validExtensions = options.extensions || ['js'];
-        if (options.extensions) {
+        var validExtensions = options.validExtensions || ['js'];
+        if (options.validExtensions) {
           transpiler.extensions = validExtensions;
-          delete options.extensions;
+          delete options.validExtensions;
         }
 
         return transpiler(tree, options);
