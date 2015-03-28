@@ -13,7 +13,10 @@ module.exports = {
       name: 'ember-cli-babel',
       ext: 'js',
       toTree: function(tree) {
-        return require('broccoli-babel-transpiler')(tree, getOptions(addon));
+        // Temporary hack to only bable .es6 files - waiting on https://github.com/babel/broccoli-babel-transpiler/pull/15
+        var transpiler = require('broccoli-babel-transpiler');
+        transpiler.prototype.extensions = ['es6'];
+        return transpiler(tree, getOptions(addon));
       }
     };
 
